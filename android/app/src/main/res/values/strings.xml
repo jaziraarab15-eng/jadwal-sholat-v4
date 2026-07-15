@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">jadwal sholat</string>
+    <string name="title_activity_main">jadwal sholat</string>
+    <string name="package_name">com.jaziraarab15eng.jadwalsholat</string>
+    <string name="custom_url_scheme">com.jaziraarab15eng.jadwalsholat</string>
+</resources>
