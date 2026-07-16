@@ -152,12 +152,14 @@ const bulanBtn = document.getElementById("bulanBtn");
 const menuBtn = document.getElementById("menuBtn");
 
 const homePage = document.getElementById("homePage");
+const sholatPage = document.getElementById("sholatPage");
 const kiblatPage = document.getElementById("kiblatPage");
 const bulanPage = document.getElementById("bulanPage");
 const menuPage = document.getElementById("menuPage");
 
 function tampilHalaman(halaman) {
   homePage.style.display = "none";
+  sholatPage.style.display = "none";
   kiblatPage.style.display = "none";
   bulanPage.style.display = "none";
   menuPage.style.display = "none";
@@ -166,7 +168,7 @@ function tampilHalaman(halaman) {
 }
 
 homeBtn.onclick = () => tampilHalaman(homePage);
-sholatBtn.onclick = () => tampilHalaman(homePage);
+sholatBtn.onclick = () => tampilHalaman(sholatPage);
 kiblatBtn.onclick = () => tampilHalaman(kiblatPage);
 bulanBtn.onclick = () => tampilHalaman(bulanPage);
 menuBtn.onclick = () => tampilHalaman(menuPage);
