@@ -120,8 +120,6 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
-nextPrayer.textContent = "Jadwal Hari Ini";
-countdown.textContent = "Berhasil dihitung";
   } catch (err) {
     console.error(err);
     kota.textContent = "Gagal mengambil lokasi";
