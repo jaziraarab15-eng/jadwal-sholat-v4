@@ -9,8 +9,41 @@ import {
 
 async function mulai() {
   const kota = document.getElementById("kota");
-  const nextPrayer = document.getElementById("nextPrayer");
-  const countdown = document.getElementById("countdown");
+ const jadwal = [
+  { nama: "Subuh", waktu: prayer.fajr },
+  { nama: "Syuruq", waktu: prayer.sunrise },
+  { nama: "Zuhur", waktu: prayer.dhuhr },
+  { nama: "Ashar", waktu: prayer.asr },
+  { nama: "Magrib", waktu: prayer.maghrib },
+  { nama: "Isya", waktu: prayer.isha }
+];
+
+const sekarang = new Date();
+
+let berikutnya = jadwal.find(j => j.waktu > sekarang);
+
+if (!berikutnya) {
+  berikutnya = jadwal[0];
+  berikutnya.waktu.setDate(berikutnya.waktu.getDate() + 1);
+}
+
+nextPrayer.textContent = berikutnya.nama;
+
+function updateCountdown() {
+  const sisa = berikutnya.waktu - new Date();
+
+  const jam = Math.floor(sisa / 3600000);
+  const menit = Math.floor((sisa % 3600000) / 60000);
+  const detik = Math.floor((sisa % 60000) / 1000);
+
+  countdown.textContent =
+    `${String(jam).padStart(2, "0")}:` +
+    `${String(menit).padStart(2, "0")}:` +
+    `${String(detik).padStart(2, "0")}`;
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
 
   try {
     const izin = await Geolocation.requestPermissions();
