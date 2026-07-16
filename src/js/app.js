@@ -22,10 +22,25 @@ async function mulai() {
       enableHighAccuracy: true
     });
 
-    const lat = posisi.coords.latitude.toFixed(6);
-    const lon = posisi.coords.longitude.toFixed(6);
+const lat = posisi.coords.latitude.toFixed(6);
+const lon = posisi.coords.longitude.toFixed(6);
 
-    kota.textContent = `Lat: ${lat} | Lon: ${lon}`;
+try {
+  const res = await fetch(
+    `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`
+  );
+
+  const data = await res.json();
+
+  const alamat = data.address;
+
+  kota.textContent =
+    `${alamat.city || alamat.town || alamat.village || alamat.county}, ` +
+    `${alamat.state}`;
+
+} catch {
+  kota.textContent = `Lat: ${lat} | Lon: ${lon}`;
+}
 
 const coordinates = new Coordinates(
   parseFloat(lat),
