@@ -144,3 +144,29 @@ setInterval(updateCountdown, 1000);
 }
 
 mulai();
+
+const homeBtn = document.getElementById("homeBtn");
+const sholatBtn = document.getElementById("sholatBtn");
+const kiblatBtn = document.getElementById("kiblatBtn");
+const bulanBtn = document.getElementById("bulanBtn");
+const menuBtn = document.getElementById("menuBtn");
+
+const homePage = document.getElementById("homePage");
+const kiblatPage = document.getElementById("kiblatPage");
+const bulanPage = document.getElementById("bulanPage");
+const menuPage = document.getElementById("menuPage");
+
+function tampilHalaman(halaman) {
+  homePage.style.display = "none";
+  kiblatPage.style.display = "none";
+  bulanPage.style.display = "none";
+  menuPage.style.display = "none";
+
+  halaman.style.display = "block";
+}
+
+homeBtn.onclick = () => tampilHalaman(homePage);
+sholatBtn.onclick = () => tampilHalaman(homePage);
+kiblatBtn.onclick = () => tampilHalaman(kiblatPage);
+bulanBtn.onclick = () => tampilHalaman(bulanPage);
+menuBtn.onclick = () => tampilHalaman(menuPage);

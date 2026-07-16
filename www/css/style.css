@@ -77,3 +77,36 @@ border-bottom:none;
 font-weight:bold;
 color:#0b8f5d;
 }
+
+.bottom-nav{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    height:70px;
+    background:#fff;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    box-shadow:0 -3px 15px rgba(0,0,0,.15);
+    border-radius:20px 20px 0 0;
+    z-index:999;
+}
+
+.bottom-nav button{
+    flex:1;
+    height:100%;
+    border:none;
+    background:none;
+    color:#1b5e20;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.bottom-nav button:active{
+    background:#e8f5e9;
+}
+
+body{
+    padding-bottom:90px;
+}
