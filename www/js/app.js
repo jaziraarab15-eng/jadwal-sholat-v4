@@ -1,10 +1,12 @@
 import { Geolocation } from "@capacitor/geolocation";
+import { Motion } from "@capacitor/motion";
 
 import {
   PrayerTimes,
   Coordinates,
   CalculationMethod,
   Madhab
+  Qibla
 } from "adhan";
 
 async function mulai() {
@@ -46,6 +48,11 @@ const coordinates = new Coordinates(
   parseFloat(lat),
   parseFloat(lon)
 );
+ 
+const arahKiblat = Qibla(coordinates);
+
+document.getElementById("qiblaDegree").textContent =
+  `${arahKiblat.toFixed(1)}°`;
 
 const params = CalculationMethod.Singapore();
 params.madhab = Madhab.Shafi;
@@ -88,6 +95,24 @@ document.getElementById("maghrib").textContent =
 
 document.getElementById("isha").textContent =
   prayer.isha.toLocaleTimeString("id-ID", {
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+
+document.getElementById("sunriseHome").textContent =
+  prayer.sunrise.toLocaleTimeString("id-ID", {
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+
+document.getElementById("dhuhrHome").textContent =
+  prayer.dhuhr.toLocaleTimeString("id-ID", {
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+
+document.getElementById("maghribHome").textContent =
+  prayer.maghrib.toLocaleTimeString("id-ID", {
     hour: "2-digit",
     minute: "2-digit"
   });
@@ -172,3 +197,18 @@ sholatBtn.onclick = () => tampilHalaman(sholatPage);
 kiblatBtn.onclick = () => tampilHalaman(kiblatPage);
 bulanBtn.onclick = () => tampilHalaman(bulanPage);
 menuBtn.onclick = () => tampilHalaman(menuPage);
+
+const needle = document.getElementById("needle");
+const qiblaDegree = document.getElementById("qiblaDegree");
+
+const ARAH_KIBLAT = 295;
+
+Motion.addListener("orientation", (event) => {
+  const heading = event.alpha ?? 0;
+
+  needle.style.transform =
+    `rotate(${ARAH_KIBLAT - heading}deg)`;
+
+  qiblaDegree.textContent =
+    `${Math.round(ARAH_KIBLAT)}°`;
+});

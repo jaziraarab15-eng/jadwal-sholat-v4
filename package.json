@@ -7,9 +7,10 @@
     "@capacitor/android": "^8.4.2",
     "@capacitor/geolocation": "^8.2.0",
     "@capacitor/local-notifications": "^8.2.1",
+    "@capacitor/motion": "^8.0.1",
     "adhan": "^4.4.4",
-    "luxon": "^3.7.2",
-    "axios": "^1.11.0"
+    "axios": "^1.11.0",
+    "luxon": "^3.7.2"
   },
   "devDependencies": {
     "@capacitor/cli": "^8.4.2",

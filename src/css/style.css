@@ -110,3 +110,47 @@ color:#0b8f5d;
 body{
     padding-bottom:90px;
 }
+
+.info-card{
+  margin-top:15px;
+  border-radius:18px;
+  padding:15px;
+  background:linear-gradient(135deg,#1b5e20,#2e7d32);
+  color:#fff;
+  box-shadow:0 8px 20px rgba(0,0,0,.18);
+}
+
+.info-card .row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 0;
+  border-bottom:1px solid rgba(255,255,255,.2);
+}
+
+.info-card .row:last-child{
+  border-bottom:none;
+}
+
+.info-card span:last-child{
+  font-weight:bold;
+  font-size:17px;
+}
+
+.compass{
+  width:220px;
+  height:220px;
+  margin:20px auto;
+  border:8px solid #2e7d32;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#f8fff8;
+  box-shadow:0 5px 20px rgba(0,0,0,.15);
+}
+
+#needle{
+  font-size:70px;
+  transition:transform .25s linear;
+}
