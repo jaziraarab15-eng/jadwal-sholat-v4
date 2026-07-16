@@ -27,6 +27,10 @@ async function mulai() {
 const lat = posisi.coords.latitude.toFixed(6);
 const lon = posisi.coords.longitude.toFixed(6);
 
+// Simpan lokasi terakhir
+localStorage.setItem("lastLat", lat);
+localStorage.setItem("lastLon", lon);
+
 try {
   const res = await fetch(
     `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`
@@ -169,6 +173,12 @@ setInterval(updateCountdown, 1000);
 }
 
 mulai();
+
+const refreshLokasi = document.getElementById("refreshLokasi");
+
+refreshLokasi.onclick = () => {
+  mulai();
+};
 
 const homeBtn = document.getElementById("homeBtn");
 const sholatBtn = document.getElementById("sholatBtn");
