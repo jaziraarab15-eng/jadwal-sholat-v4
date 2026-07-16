@@ -5,7 +5,7 @@ import {
   PrayerTimes,
   Coordinates,
   CalculationMethod,
-  Madhab
+  Madhab,
   Qibla
 } from "adhan";
 
