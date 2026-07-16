@@ -9,41 +9,6 @@ import {
 
 async function mulai() {
   const kota = document.getElementById("kota");
- const jadwal = [
-  { nama: "Subuh", waktu: prayer.fajr },
-  { nama: "Syuruq", waktu: prayer.sunrise },
-  { nama: "Zuhur", waktu: prayer.dhuhr },
-  { nama: "Ashar", waktu: prayer.asr },
-  { nama: "Magrib", waktu: prayer.maghrib },
-  { nama: "Isya", waktu: prayer.isha }
-];
-
-const sekarang = new Date();
-
-let berikutnya = jadwal.find(j => j.waktu > sekarang);
-
-if (!berikutnya) {
-  berikutnya = jadwal[0];
-  berikutnya.waktu.setDate(berikutnya.waktu.getDate() + 1);
-}
-
-nextPrayer.textContent = berikutnya.nama;
-
-function updateCountdown() {
-  const sisa = berikutnya.waktu - new Date();
-
-  const jam = Math.floor(sisa / 3600000);
-  const menit = Math.floor((sisa % 3600000) / 60000);
-  const detik = Math.floor((sisa % 60000) / 1000);
-
-  countdown.textContent =
-    `${String(jam).padStart(2, "0")}:` +
-    `${String(menit).padStart(2, "0")}:` +
-    `${String(detik).padStart(2, "0")}`;
-}
-
-updateCountdown();
-setInterval(updateCountdown, 1000);
 
   try {
     const izin = await Geolocation.requestPermissions();
@@ -111,6 +76,49 @@ document.getElementById("isha").textContent =
     hour: "2-digit",
     minute: "2-digit"
   });
+
+const jadwal = [
+  { nama: "Subuh", waktu: prayer.fajr },
+  { nama: "Syuruq", waktu: prayer.sunrise },
+  { nama: "Zuhur", waktu: prayer.dhuhr },
+  { nama: "Ashar", waktu: prayer.asr },
+  { nama: "Magrib", waktu: prayer.maghrib },
+  { nama: "Isya", waktu: prayer.isha }
+];
+
+let sekarang = new Date();
+
+let berikutnya = jadwal.find(j => j.waktu > sekarang);
+
+if (!berikutnya) {
+  berikutnya = {
+    nama: "Subuh",
+    waktu: new Date(prayer.fajr.getTime() + 24 * 60 * 60 * 1000)
+  };
+}
+
+nextPrayer.textContent = berikutnya.nama;
+
+function updateCountdown() {
+  const sisa = berikutnya.waktu.getTime() - Date.now();
+
+  if (sisa <= 0) {
+    countdown.textContent = "00:00:00";
+    return;
+  }
+
+  const jam = Math.floor(sisa / 3600000);
+  const menit = Math.floor((sisa % 3600000) / 60000);
+  const detik = Math.floor((sisa % 60000) / 1000);
+
+  countdown.textContent =
+    `${String(jam).padStart(2, "0")}:` +
+    `${String(menit).padStart(2, "0")}:` +
+    `${String(detik).padStart(2, "0")}`;
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
 
 nextPrayer.textContent = "Jadwal Hari Ini";
 countdown.textContent = "Berhasil dihitung";
