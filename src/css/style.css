@@ -154,3 +154,40 @@ body{
   font-size:70px;
   transition:transform .25s linear;
 }
+
+.top-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:#0b8f5d;
+  color:#fff;
+  padding:16px 18px;
+  border-radius:0 0 25px 25px;
+}
+
+.header-text{
+  flex:1;
+  margin-left:12px;
+  text-align:left;
+}
+
+.header-text h2{
+  margin:0;
+  font-size:24px;
+}
+
+.header-text p{
+  margin-top:4px;
+  font-size:14px;
+  opacity:.9;
+}
+
+.top-header button{
+  width:42px;
+  height:42px;
+  border:none;
+  border-radius:50%;
+  background:rgba(255,255,255,.15);
+  color:#fff;
+  font-size:24px;
+}

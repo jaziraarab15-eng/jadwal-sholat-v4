@@ -53,7 +53,7 @@ const coordinates = new Coordinates(
   parseFloat(lon)
 );
  
-const arahKiblat = Qibla(coordinates);
+  arahKiblat = Qibla(coordinates);
 
 document.getElementById("qiblaDegree").textContent =
   `${arahKiblat.toFixed(1)}°`;
@@ -174,9 +174,9 @@ setInterval(updateCountdown, 1000);
 
 mulai();
 
-const refreshLokasi = document.getElementById("refreshLokasi");
+const refreshHeaderBtn = document.getElementById("refreshHeaderBtn");
 
-refreshLokasi.onclick = () => {
+refreshHeaderBtn.onclick = () => {
   mulai();
 };
 
@@ -211,14 +211,15 @@ menuBtn.onclick = () => tampilHalaman(menuPage);
 const needle = document.getElementById("needle");
 const qiblaDegree = document.getElementById("qiblaDegree");
 
-const ARAH_KIBLAT = 295;
+let arahKiblat = 295;
 
 Motion.addListener("orientation", (event) => {
   const heading = event.alpha ?? 0;
 
   needle.style.transform =
-    `rotate(${ARAH_KIBLAT - heading}deg)`;
+  `rotate(${arahKiblat - heading}deg)`;
 
-  qiblaDegree.textContent =
-    `${Math.round(ARAH_KIBLAT)}°`;
+qiblaDegree.textContent =
+  `${Math.round(arahKiblat)}°`;
+
 });
