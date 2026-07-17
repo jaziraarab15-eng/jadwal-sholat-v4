@@ -11,11 +11,15 @@ color:#333;
 }
 
 header{
-background:#0b8f5d;
-color:#fff;
-padding:30px 20px;
-text-align:center;
-border-radius:0 0 25px 25px;
+
+  background: linear-gradient(135deg,#0b8f5d,#1b5e20);
+  color:#fff;
+  padding:25px 20px 35px;
+  border-radius:0 0 30px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  box-shadow:0 6px 18px rgba(0,0,0,.2);
 }
 
 header h2{
@@ -26,6 +30,30 @@ header p{
 margin-top:8px;
 font-size:15px;
 opacity:.9;
+}
+
+.header-left h2{
+  font-size:28px;
+  margin-bottom:6px;
+}
+
+.header-left p{
+  margin:2px 0;
+  opacity:.95;
+}
+
+.header-right button{
+  width:46px;
+  height:46px;
+  border:none;
+  border-radius:50%;
+  background:rgba(255,255,255,.18);
+  color:#fff;
+  font-size:22px;
+}
+
+.header-right button:active{
+  transform:scale(.95);
 }
 
 .card{
@@ -190,4 +218,35 @@ body{
   background:rgba(255,255,255,.15);
   color:#fff;
   font-size:24px;
+}
+
+.greeting{
+  display:block;
+  font-size:13px;
+  opacity:.85;
+  margin-bottom:4px;
+  letter-spacing:.5px;
+}
+
+.header-text h2{
+  margin:0;
+  font-size:24px;
+  font-weight:700;
+}
+
+.header-text p{
+  margin:4px 0 2px;
+  font-size:14px;
+  opacity:.9;
+}
+
+#tanggalHijriah{
+  display:block;
+  font-size:12px;
+  opacity:.8;
+}
+
+.top-header{
+  background:linear-gradient(135deg,#0b8f5d,#1b5e20);
+  box-shadow:0 6px 18px rgba(0,0,0,.18);
 }

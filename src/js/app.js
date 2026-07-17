@@ -81,6 +81,25 @@ try {
     `${alamat.city || alamat.town || alamat.village || alamat.county}, ` +
     `${alamat.state}`;
 
+const tanggalHijriah = document.getElementById("tanggalHijriah");
+
+const sekarang = new Date();
+
+const masehi = sekarang.toLocaleDateString("id-ID", {
+  weekday: "long",
+  day: "numeric",
+  month: "long",
+  year: "numeric"
+});
+
+const hijriah = new Intl.DateTimeFormat("id-TN-u-ca-islamic", {
+  day: "numeric",
+  month: "long",
+  year: "numeric"
+}).format(sekarang);
+
+tanggalHijriah.textContent = `${masehi} • ${hijriah} H`;
+
 } catch {
   kota.textContent = `Lat: ${lat} | Lon: ${lon}`;
 }
