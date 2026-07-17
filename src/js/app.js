@@ -10,6 +10,8 @@ import {
   Qibla
 } from "adhan";
 
+let countdownInterval;
+
 async function
 jadwalkanNotifikasi(prayer) {
 
@@ -307,7 +309,12 @@ function updateCountdown() {
 }
 
 updateCountdown();
-setInterval(updateCountdown, 1000);
+
+if (countdownInterval) {
+  clearInterval(countdownInterval);
+}
+
+countdownInterval = setInterval(updateCountdown, 1000);
 
 } catch (err) {
   console.error(err);
