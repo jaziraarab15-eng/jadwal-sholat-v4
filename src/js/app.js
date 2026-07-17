@@ -57,12 +57,34 @@ if (izinNotif.display !== "granted") {
       return;
     }
 
-    const posisi = await Geolocation.getCurrentPosition({
-      enableHighAccuracy: true
-    });
+    let lat;
+let lon;
 
-const lat = posisi.coords.latitude.toFixed(6);
-const lon = posisi.coords.longitude.toFixed(6);
+try {
+  const posisi = await Geolocation.getCurrentPosition({
+    enableHighAccuracy: true,
+    timeout: 10000
+  });
+
+  lat = posisi.coords.latitude.toFixed(6);
+  lon = posisi.coords.longitude.toFixed(6);
+
+  // Simpan lokasi terakhir
+  localStorage.setItem("lastLat", lat);
+  localStorage.setItem("lastLon", lon);
+
+} catch {
+
+  lat = localStorage.getItem("lastLat");
+  lon = localStorage.getItem("lastLon");
+
+  if (!lat || !lon) {
+    kota.textContent = "Belum ada lokasi tersimpan";
+    return;
+  }
+
+  kota.textContent = "📍 Menggunakan lokasi terakhir";
+}
 
 // Simpan lokasi terakhir
 localStorage.setItem("lastLat", lat);
@@ -259,12 +281,15 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
-  } catch (err) {
-    console.error(err);
+} catch (err) {
+  console.error(err);
+
+  if (!localStorage.getItem("lastLat")) {
     kota.textContent = "Gagal mengambil lokasi";
     nextPrayer.textContent = "Error";
     countdown.textContent = "--:--:--";
   }
+}
 }
 
 mulai();
