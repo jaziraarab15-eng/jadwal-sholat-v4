@@ -130,6 +130,8 @@ let sekarang = new Date();
 
 let berikutnya = jadwal.find(j => j.waktu > sekarang);
 
+let adzanSudahBunyi = false;
+
 if (!berikutnya) {
   berikutnya = {
     nama: "Subuh",
@@ -143,9 +145,30 @@ function updateCountdown() {
   const sisa = berikutnya.waktu.getTime() - Date.now();
 
   if (sisa <= 0) {
-    countdown.textContent = "00:00:00";
-    return;
-  }
+
+countdown.textContent = "00:00:00";
+
+if (!adzanSudahBunyi) {
+
+const aktif =
+localStorage.getItem("adzanAktif");
+
+if (aktif === "true") {
+
+const audio = new Audio(
+"audio/adzan.mp3"
+);
+
+audio.play();
+
+}
+
+adzanSudahBunyi = true;
+
+}
+
+return;
+}
 
   const jam = Math.floor(sisa / 3600000);
   const menit = Math.floor((sisa % 3600000) / 60000);
@@ -212,3 +235,21 @@ Motion.addListener("orientation", (event) => {
   qiblaDegree.textContent =
     `${Math.round(ARAH_KIBLAT)}°`;
 });
+
+const adzanSwitch = document.getElementById("adzanSwitch");
+
+if (adzanSwitch) {
+
+adzanSwitch.checked =
+localStorage.getItem("adzanAktif") === "true";
+
+adzanSwitch.addEventListener("change", () => {
+
+localStorage.setItem(
+"adzanAktif",
+adzanSwitch.checked
+);
+
+});
+
+}
