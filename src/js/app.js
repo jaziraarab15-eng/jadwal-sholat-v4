@@ -40,11 +40,25 @@ if (localStorage.getItem("notifAktif") === "false") {
           id: item.id,
           title: item.title,
           body: "Telah masuk waktu sholat",
+          channelId: "adzan",
           schedule: { at: item.waktu }
         }]
       });
     }
   }
+}
+
+async function buatChannelAdzan() {
+
+  await LocalNotifications.createChannel({
+    id: "adzan",
+    name: "Adzan",
+    description: "Notifikasi waktu sholat dengan suara adzan",
+    importance: 5,
+    sound: "adzan.mp3",
+    vibration: true
+  });
+
 }
 
 async function mulai() {
@@ -55,6 +69,8 @@ const izinNotif = await LocalNotifications.requestPermissions();
 if (izinNotif.display !== "granted") {
   console.log("Izin notifikasi ditolak");
 }
+
+await buatChannelAdzan();
 
   try {
     const izin = await Geolocation.requestPermissions();

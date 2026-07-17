@@ -1,5 +1,6 @@
 import { Geolocation } from "@capacitor/geolocation";
 import { Motion } from "@capacitor/motion";
+import { LocalNotifications } from "@capacitor/local-notifications";
 
 import {
   PrayerTimes,
@@ -9,8 +10,84 @@ import {
   Qibla
 } from "adhan";
 
+async function izinNotifikasi() {
+
+  await LocalNotifications.requestPermissions();
+
+}
+
+async function buatChannelAdzan() {
+
+  await LocalNotifications.createChannel({
+    id: "adzan",
+    name: "Adzan",
+    description: "Notifikasi waktu sholat dengan suara adzan",
+    importance: 5,
+    sound: "adzan.mp3",
+    vibration: true
+  });
+
+}
+
+async function jadwalNotifikasiSholat(prayer) {
+
+  await LocalNotifications.schedule({
+    notifications: [
+      {
+        id: 1,
+        title: "🕌 Waktu Subuh",
+        body: "Saatnya sholat Subuh",
+        channelId: "adzan",
+        schedule: {
+          at: prayer.fajr
+        }
+      },
+      {
+        id: 2,
+        title: "🕌 Waktu Zuhur",
+        body: "Saatnya sholat Zuhur",
+        channelId: "adzan",
+        schedule: {
+          at: prayer.dhuhr
+        }
+      },
+      {
+        id: 3,
+        title: "🕌 Waktu Ashar",
+        body: "Saatnya sholat Ashar",
+        channelId: "adzan",
+        schedule: {
+          at: prayer.asr
+        }
+      },
+      {
+        id: 4,
+        title: "🕌 Waktu Magrib",
+        body: "Saatnya sholat Magrib",
+        channelId: "adzan",
+        schedule: {
+          at: prayer.maghrib
+        }
+      },
+      {
+        id: 5,
+        title: "🕌 Waktu Isya",
+        body: "Saatnya sholat Isya",
+        channelId: "adzan",
+        schedule: {
+          at: prayer.isha
+        }
+      }
+    ]
+  });
+
+}
+
 async function mulai() {
   const kota = document.getElementById("kota");
+
+await izinNotifikasi();
+await buatChannelAdzan();
 
   try {
     const izin = await Geolocation.requestPermissions();
@@ -62,6 +139,8 @@ const prayer = new PrayerTimes(
   new Date(),
   params
 );
+
+await jadwalNotifikasiSholat(prayer);
 
 document.getElementById("fajr").textContent =
   prayer.fajr.toLocaleTimeString("id-ID", {
