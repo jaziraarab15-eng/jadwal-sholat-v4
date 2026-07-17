@@ -12,6 +12,11 @@ import {
 
 async function
 jadwalkanNotifikasi(prayer) {
+
+if (localStorage.getItem("notifAktif") === "false") {
+  return;
+}
+
   await LocalNotifications.cancel({ notifications: [
     { id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }
   ]});
@@ -151,8 +156,16 @@ const coordinates = new Coordinates(
 document.getElementById("qiblaDegree").textContent =
   `${arahKiblat.toFixed(1)}°`;
 
-const params = CalculationMethod.Singapore();
-params.madhab = Madhab.Shafi;
+const method =
+  localStorage.getItem("method") || "Singapore";
+
+const params =
+  CalculationMethod[method]();
+
+const madhab =
+  localStorage.getItem("madhab") || "Shafi";
+
+params.madhab = Madhab[madhab];
 
 const prayer = new PrayerTimes(
   coordinates,
@@ -393,3 +406,113 @@ function updateJam() {
 
 updateJam();
 setInterval(updateJam, 1000);
+
+const notifSwitch = document.getElementById("notifSwitch");
+
+if (notifSwitch) {
+
+  notifSwitch.checked =
+    localStorage.getItem("notifAktif") !== "false";
+
+  notifSwitch.onchange = async () => {
+
+  localStorage.setItem(
+    "notifAktif",
+    notifSwitch.checked
+  );
+
+  if (!notifSwitch.checked) {
+
+    await LocalNotifications.cancel({
+      notifications: [
+        { id: 1 },
+        { id: 2 },
+        { id: 3 },
+        { id: 4 },
+        { id: 5 }
+      ]
+    });
+
+  } else {
+
+    await mulai();
+
+  }
+
+};
+
+}
+
+const adzanSwitch = document.getElementById("adzanSwitch");
+
+if (adzanSwitch) {
+
+  adzanSwitch.checked =
+    localStorage.getItem("adzanAktif") === "true";
+
+  adzanSwitch.onchange = () => {
+    localStorage.setItem(
+      "adzanAktif",
+      adzanSwitch.checked
+    );
+  };
+
+}
+
+const vibrateSwitch = document.getElementById("vibrateSwitch");
+
+if (vibrateSwitch) {
+
+  vibrateSwitch.checked =
+    localStorage.getItem("vibrateAktif") !== "false";
+
+  vibrateSwitch.onchange = () => {
+
+    localStorage.setItem(
+      "vibrateAktif",
+      vibrateSwitch.checked
+    );
+
+  };
+
+}
+
+const methodSelect = document.getElementById("methodSelect");
+
+if (methodSelect) {
+
+  methodSelect.value =
+    localStorage.getItem("method") || "Singapore";
+
+  methodSelect.onchange = () => {
+
+    localStorage.setItem(
+      "method",
+      methodSelect.value
+    );
+
+    mulai();
+
+  };
+
+}
+
+const madhabSelect = document.getElementById("madhabSelect");
+
+if (madhabSelect) {
+
+  madhabSelect.value =
+    localStorage.getItem("madhab") || "Shafi";
+
+  madhabSelect.onchange = () => {
+
+    localStorage.setItem(
+      "madhab",
+      madhabSelect.value
+    );
+
+    mulai();
+
+  };
+
+}
