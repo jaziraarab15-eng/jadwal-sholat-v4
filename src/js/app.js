@@ -11,6 +11,37 @@ import {
 } from "adhan";
 
 async function mulai() {
+
+async function jadwalkanNotifikasi(prayer) {
+  await LocalNotifications.cancel({ notifications: [
+    { id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }
+  ]});
+
+  const sekarang = new Date();
+
+  const data = [
+    { id: 1, title: "🕌 Waktu Subuh", waktu: prayer.fajr },
+    { id: 2, title: "🕌 Waktu Zuhur", waktu: prayer.dhuhr },
+    { id: 3, title: "🕌 Waktu Ashar", waktu: prayer.asr },
+    { id: 4, title: "🕌 Waktu Magrib", waktu: prayer.maghrib },
+    { id: 5, title: "🕌 Waktu Isya", waktu: prayer.isha }
+  ];
+
+  for (const item of data) {
+    if (item.waktu > sekarang) {
+      await LocalNotifications.schedule({
+        notifications: [{
+          id: item.id,
+          title: item.title,
+          body: "Telah masuk waktu sholat",
+          schedule: { at: item.waktu }
+        }]
+      });
+    }
+  }
+}
+
+async function mulai() {
   const kota = document.getElementById("kota");
 
 const izinNotif = await LocalNotifications.requestPermissions();
@@ -59,7 +90,7 @@ const coordinates = new Coordinates(
   parseFloat(lat),
   parseFloat(lon)
 );
- 
+
   arahKiblat = Qibla(coordinates);
 
 document.getElementById("qiblaDegree").textContent =
@@ -73,6 +104,8 @@ const prayer = new PrayerTimes(
   new Date(),
   params
 );
+
+await jadwalkanNotifikasi(prayer);
 
 document.getElementById("fajr").textContent =
   prayer.fajr.toLocaleTimeString("id-ID", {
