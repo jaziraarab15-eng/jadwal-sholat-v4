@@ -311,8 +311,23 @@ mulai();
 
 const refreshHeaderBtn = document.getElementById("refreshHeaderBtn");
 
-refreshHeaderBtn.onclick = () => {
-  mulai();
+refreshHeaderBtn.onclick = async () => {
+
+  const status = document.getElementById("statusRefresh");
+
+  status.style.display = "block";
+
+  refreshHeaderBtn.disabled = true;
+  refreshHeaderBtn.classList.add("loading");
+
+  try {
+    await mulai();
+  } finally {
+    status.style.display = "none";
+    refreshHeaderBtn.disabled = false;
+    refreshHeaderBtn.classList.remove("loading");
+  }
+
 };
 
 const homeBtn = document.getElementById("homeBtn");
@@ -335,6 +350,11 @@ function tampilHalaman(halaman) {
   menuPage.style.display = "none";
 
   halaman.style.display = "block";
+
+halaman.classList.remove("page");
+void halaman.offsetWidth;
+halaman.classList.add("page");
+
 }
 
 homeBtn.onclick = () => tampilHalaman(homePage);
