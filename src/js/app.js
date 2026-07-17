@@ -13,6 +13,12 @@ import {
 async function mulai() {
   const kota = document.getElementById("kota");
 
+const izinNotif = await LocalNotifications.requestPermissions();
+
+if (izinNotif.display !== "granted") {
+  console.log("Izin notifikasi ditolak");
+}
+
   try {
     const izin = await Geolocation.requestPermissions();
 
@@ -176,11 +182,6 @@ setInterval(updateCountdown, 1000);
 mulai();
 
 const refreshHeaderBtn = document.getElementById("refreshHeaderBtn");
-const izinNotif = await LocalNotifications.requestPermissions();
-
-if (izinNotif.display !== "granted") {
-  console.log("Izin notifikasi ditolak");
-}
 
 refreshHeaderBtn.onclick = () => {
   mulai();
