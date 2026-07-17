@@ -10,9 +10,8 @@ import {
   Qibla
 } from "adhan";
 
-async function mulai() {
-
-async function jadwalkanNotifikasi(prayer) {
+async function
+jadwalkanNotifikasi(prayer) {
   await LocalNotifications.cancel({ notifications: [
     { id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }
   ]});
