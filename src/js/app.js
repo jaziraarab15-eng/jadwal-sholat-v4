@@ -1,5 +1,6 @@
 import { Geolocation } from "@capacitor/geolocation";
 import { Motion } from "@capacitor/motion";
+import { LocalNotifications } from "@capacitor/local-notifications";
 
 import {
   PrayerTimes,
@@ -175,6 +176,11 @@ setInterval(updateCountdown, 1000);
 mulai();
 
 const refreshHeaderBtn = document.getElementById("refreshHeaderBtn");
+const izinNotif = await LocalNotifications.requestPermissions();
+
+if (izinNotif.display !== "granted") {
+  console.log("Izin notifikasi ditolak");
+}
 
 refreshHeaderBtn.onclick = () => {
   mulai();
