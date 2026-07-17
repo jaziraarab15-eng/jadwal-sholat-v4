@@ -73,10 +73,16 @@ try {
   localStorage.setItem("lastLat", lat);
   localStorage.setItem("lastLon", lon);
 
+document.getElementById("statusLokasi").textContent =
+  "📍 Mengikuti lokasi saat ini";
+
 } catch {
 
   lat = localStorage.getItem("lastLat");
   lon = localStorage.getItem("lastLon");
+
+document.getElementById("statusLokasi").textContent =
+  "📍 Menggunakan lokasi terakhir";
 
   if (!lat || !lon) {
     kota.textContent = "Belum ada lokasi tersimpan";
@@ -99,9 +105,12 @@ try {
 
   const alamat = data.address;
 
-  kota.textContent =
-    `${alamat.city || alamat.town || alamat.village || alamat.county}, ` +
-    `${alamat.state}`;
+  const namaKota =
+  `${alamat.city || alamat.town || alamat.village || alamat.county}, ${alamat.state}`;
+
+kota.textContent = namaKota;
+
+localStorage.setItem("lastCity", namaKota);
 
 const tanggalHijriah = document.getElementById("tanggalHijriah");
 
@@ -123,7 +132,13 @@ const hijriah = new Intl.DateTimeFormat("id-TN-u-ca-islamic", {
 tanggalHijriah.textContent = `${masehi} • ${hijriah} H`;
 
 } catch {
-  kota.textContent = `Lat: ${lat} | Lon: ${lon}`;
+  const lastCity = localStorage.getItem("lastCity");
+
+  if (lastCity) {
+    kota.textContent = `📍 ${lastCity}`;
+  } else {
+    kota.textContent = `Lat: ${lat} | Lon: ${lon}`;
+  }
 }
 
 const coordinates = new Coordinates(
