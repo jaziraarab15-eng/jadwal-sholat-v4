@@ -250,3 +250,109 @@ body{
   background:linear-gradient(135deg,#0b8f5d,#1b5e20);
   box-shadow:0 6px 18px rgba(0,0,0,.18);
 }
+
+.next-card{
+  background:linear-gradient(135deg,#0b8f5d,#1b5e20);
+  color:#fff;
+  border-radius:24px;
+  box-shadow:0 10px 24px rgba(0,0,0,.22);
+  padding:24px;
+}
+
+.next-label{
+  display:inline-block;
+  font-size:13px;
+  letter-spacing:1px;
+  opacity:.9;
+  margin-bottom:10px;
+}
+
+.next-card h1{
+  color:#fff;
+  font-size:42px;
+  margin:12px 0;
+  font-weight:700;
+}
+
+.next-card p{
+  color:#fff;
+  font-size:32px;
+  font-weight:bold;
+  margin:8px 0;
+}
+
+.next-footer{
+  margin-top:18px;
+  padding-top:12px;
+  border-top:1px solid rgba(255,255,255,.2);
+  font-size:13px;
+  opacity:.9;
+}
+
+.row.active{
+  background:linear-gradient(135deg,#0b8f5d,#1b5e20);
+  color:#fff;
+  border-radius:12px;
+  margin:4px 8px;
+  box-shadow:0 4px 10px rgba(0,0,0,.15);
+}
+
+.row.active span:last-child{
+  color:#fff;
+  font-weight:bold;
+}
+
+body.night{
+  background:#101820;
+  color:#f5f5f5;
+}
+
+body.night .card,
+body.night .jadwal{
+  background:#1b2631;
+  color:#fff;
+}
+
+body.night .row{
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+body.night .row span:last-child{
+  color:#7CFFB2;
+}
+
+body.night .top-header{
+  background:linear-gradient(135deg,#081c15,#1b4332);
+}
+
+body.night .bottom-nav{
+  background:#18232d;
+}
+
+body.night .bottom-nav button{
+  color:#fff;
+}
+
+.clock-card{
+  margin:18px 20px;
+  padding:18px;
+  border-radius:22px;
+  background:#ffffff;
+  text-align:center;
+  box-shadow:0 8px 18px rgba(0,0,0,.12);
+}
+
+#jamDigital{
+  font-size:42px;
+  font-weight:bold;
+  color:#0b8f5d;
+  letter-spacing:2px;
+}
+
+body.night .clock-card{
+  background:#1b2631;
+}
+
+body.night #jamDigital{
+  color:#7CFFB2;
+}

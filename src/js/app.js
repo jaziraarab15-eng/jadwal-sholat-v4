@@ -161,6 +161,43 @@ document.getElementById("isha").textContent =
     minute: "2-digit"
   });
 
+// Hapus highlight sebelumnya
+[
+  "rowFajr",
+  "rowSunrise",
+  "rowDhuhr",
+  "rowAsr",
+  "rowMaghrib",
+  "rowIsha"
+].forEach(id => {
+  document.getElementById(id).classList.remove("active");
+});
+
+const now = new Date();
+
+let aktif = "rowIsha";
+
+if (now >= prayer.fajr && now < prayer.sunrise) {
+  aktif = "rowFajr";
+} else if (now >= prayer.sunrise && now < prayer.dhuhr) {
+  aktif = "rowSunrise";
+} else if (now >= prayer.dhuhr && now < prayer.asr) {
+  aktif = "rowDhuhr";
+} else if (now >= prayer.asr && now < prayer.maghrib) {
+  aktif = "rowAsr";
+} else if (now >= prayer.maghrib && now < prayer.isha) {
+  aktif = "rowMaghrib";
+}
+
+document.getElementById(aktif).classList.add("active");
+
+// Tema otomatis siang & malam
+if (now >= prayer.maghrib || now < prayer.fajr) {
+  document.body.classList.add("night");
+} else {
+  document.body.classList.remove("night");
+}
+
 document.getElementById("sunriseHome").textContent =
   prayer.sunrise.toLocaleTimeString("id-ID", {
     hour: "2-digit",
@@ -281,3 +318,18 @@ qiblaDegree.textContent =
   `${Math.round(arahKiblat)}°`;
 
 });
+
+function updateJam() {
+  const jam = document.getElementById("jamDigital");
+
+  if (!jam) return;
+
+  jam.textContent = new Date().toLocaleTimeString("id-ID", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit"
+  });
+}
+
+updateJam();
+setInterval(updateJam, 1000);

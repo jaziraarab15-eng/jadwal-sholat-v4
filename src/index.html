@@ -28,13 +28,22 @@
   <button id="refreshHeaderBtn">↻</button>
 </header>
 
-<div class="card">
+<div class="clock-card">
+  <div id="jamDigital">00:00:00</div>
+</div>
 
-<h3>Sholat Berikutnya</h3>
+<div class="card next-card">
 
-<h1 id="nextPrayer">--:--</h1>
+  <span class="next-label">🕌 SHOLAT BERIKUTNYA</span>
 
-<p id="countdown">00:00:00</p>
+  <h1 id="nextPrayer">--:--</h1>
+
+  <p id="countdown">00:00:00</p>
+
+  <div class="next-footer">
+    <span>📍 Mengikuti lokasi saat ini</span>
+  </div>
+
 </div>
 
 <div class="card info-card">
@@ -58,34 +67,34 @@
 <div class="card">
 <h2>🕌 Jadwal Sholat</h2>
 
-<div class="row">
-<span>Subuh</span>
-<span id="fajr">--:--</span>
+<div class="row" id="rowFajr">
+  <span>🌄 Subuh</span>
+  <span id="fajr">--:--</span>
 </div>
 
-<div class="row">
-<span>Syuruq</span>
-<span id="sunrise">--:--</span>
+<div class="row" id="rowSunrise">
+  <span>🌅 Syuruq</span>
+  <span id="sunrise">--:--</span>
 </div>
 
-<div class="row">
-<span>Zuhur</span>
-<span id="dhuhr">--:--</span>
+<div class="row" id="rowDhuhr">
+  <span>☀️ Zuhur</span>
+  <span id="dhuhr">--:--</span>
 </div>
 
-<div class="row">
-<span>Ashar</span>
-<span id="asr">--:--</span>
+<div class="row" id="rowAsr">
+  <span>🌤 Ashar</span>
+  <span id="asr">--:--</span>
 </div>
 
-<div class="row">
-<span>Magrib</span>
-<span id="maghrib">--:--</span>
+<div class="row" id="rowMaghrib">
+  <span>🌇 Magrib</span>
+  <span id="maghrib">--:--</span>
 </div>
 
-<div class="row">
-<span>Isya</span>
-<span id="isha">--:--</span>
+<div class="row" id="rowIsha">
+  <span>🌙 Isya</span>
+  <span id="isha">--:--</span>
 </div>
 
 </div>
