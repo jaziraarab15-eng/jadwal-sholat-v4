@@ -36,14 +36,14 @@ if (localStorage.getItem("notifAktif") === "false") {
   for (const item of data) {
     if (item.waktu > sekarang) {
       await LocalNotifications.schedule({
-        notifications: [{
-          id: item.id,
-          title: item.title,
-          body: "Telah masuk waktu sholat",
-          channelId: "adzan",
-          schedule: { at: item.waktu }
-        }]
-      });
+  notifications: [{
+    id: item.id,
+    title: item.title,
+    body: "Telah masuk waktu sholat",
+    channelId: item.id === 1 ? "adzan_subuh" : "adzan",
+    schedule: { at: item.waktu }
+  }]
+});
     }
   }
 }

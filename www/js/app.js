@@ -21,9 +21,18 @@ async function buatChannelAdzan() {
   await LocalNotifications.createChannel({
     id: "adzan",
     name: "Adzan",
-    description: "Notifikasi waktu sholat dengan suara adzan",
+    description: "Adzan Zuhur, Ashar, Magrib, dan Isya",
     importance: 5,
     sound: "adzan.mp3",
+    vibration: true
+  });
+
+  await LocalNotifications.createChannel({
+    id: "adzan_subuh",
+    name: "Adzan Subuh",
+    description: "Adzan khusus Subuh",
+    importance: 5,
+    sound: "adzan_subuh.mp3",
     vibration: true
   });
 
@@ -37,7 +46,7 @@ async function jadwalNotifikasiSholat(prayer) {
         id: 1,
         title: "🕌 Waktu Subuh",
         body: "Saatnya sholat Subuh",
-        channelId: "adzan",
+        channelId: "adzan_subuh",
         schedule: {
           at: prayer.fajr
         }
