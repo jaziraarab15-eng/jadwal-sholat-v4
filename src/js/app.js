@@ -59,6 +59,15 @@ async function buatChannelAdzan() {
     vibration: true
   });
 
+await LocalNotifications.createChannel({
+  id: "adzan_subuh",
+  name: "Adzan Subuh",
+  description: "Notifikasi khusus Subuh",
+  importance: 5,
+  sound: "adzan_subuh.mp3",
+  vibration: true
+});
+
 }
 
 async function mulai() {
