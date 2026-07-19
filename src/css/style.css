@@ -325,14 +325,18 @@ body{
 .row.active{
   background:linear-gradient(135deg,#0b8f5d,#1b5e20);
   color:#fff;
-  border-radius:12px;
-  margin:4px 8px;
-  box-shadow:0 4px 10px rgba(0,0,0,.15);
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.20);
+  animation:activePrayer 2.5s ease-in-out infinite;
 }
 
-.row.active span:last-child{
-  color:#fff;
-  font-weight:bold;
+.row.active span{
+  color:#fff !important;
+  font-weight:700;
+}
+
+.row.active img{
+  transform:scale(1.08);
 }
 
 body.night{
