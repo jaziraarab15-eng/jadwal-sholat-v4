@@ -98,14 +98,25 @@ color:#e53935;
   border:1px solid rgba(255,255,255,.15);
   border-radius:20px;
   box-shadow:0 8px 20px rgba(0,0,0,.16);
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  padding:14px 16px;
 }
 
 .row{
 display:flex;
 justify-content:space-between;
+align-items:center;
+
 padding:16px 20px;
+margin-bottom:8px;
+
 border-bottom:1px solid #eee;
+border-radius:14px;
+
 font-size:18px;
+line-height:1.4;
 
 transition:
   background .35s ease,
@@ -120,6 +131,24 @@ border-bottom:none;
 .row span:last-child{
 font-weight:bold;
 color:#0b8f5d;
+}
+
+.row img{
+  width:30px;
+  height:30px;
+  margin-right:12px;
+}
+
+.row span:first-child{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:600;
+}
+
+.row span:last-child{
+  min-width:64px;
+  text-align:right;
 }
 
 .bottom-nav{
@@ -276,6 +305,8 @@ body{
   box-shadow:0 12px 30px rgba(0,0,0,.25);
   animation:cardGlow 4s ease-in-out infinite;
   overflow:hidden;
+  padding:16px 18px;
+  min-height:140px;
 }
 
 .next-card::before{
@@ -302,24 +333,27 @@ body{
 }
 
 .next-card h1{
-  font-size:42px;
+  font-size:32px;
   font-weight:700;
-  margin:12px 0 8px;
+  margin:8px 0;
+  line-height:1.1;
   text-shadow:0 0 12px rgba(255,255,255,.25);
 }
 
 .next-card p{
-  font-size:30px;
+  font-size:22px;
   font-weight:700;
-  letter-spacing:2px;
   color:#9fffd4;
+  margin:0;
+  letter-spacing:1px;
+  line-height:1.2;
 }
 
 .next-footer{
-  margin-top:18px;
-  padding-top:12px;
+  margin-top:10px;
+  padding-top:10px;
   border-top:1px solid rgba(255,255,255,.2);
-  font-size:13px;
+  font-size:14px;
   opacity:.9;
 }
 
@@ -447,7 +481,7 @@ body.night #statusRefresh{
 .app-footer{
   text-align:center;
   padding:18px 10px;
-  margin:20px 15px 85px;
+  margin:20px 15px 10px;
   color:#bbb;
   font-size:13px;
   border-top:1px solid rgba(255,255,255,.1);
