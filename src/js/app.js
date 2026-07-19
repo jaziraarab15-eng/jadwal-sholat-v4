@@ -636,13 +636,39 @@ function updateBulanHijriah() {
 
   const sekarang = new Date();
 
-  const hijriah = new Intl.DateTimeFormat(
-    "id-TN-u-ca-islamic",
-    {
-      month: "long",
-      year: "numeric"
-    }
-  ).format(sekarang);
+  const hijriParts = new Intl.DateTimeFormat(
+  "en-TN-u-ca-islamic",
+  {
+    month: "numeric",
+    year: "numeric"
+  }
+).formatToParts(sekarang);
+
+const bulanKe = parseInt(
+  hijriParts.find(p => p.type === "month").value
+);
+
+const tahunHijri = hijriParts.find(
+  p => p.type === "year"
+).value;
+
+const namaBulanHijri = [
+  "Muharram",
+  "Safar",
+  "Rabiul Awal",
+  "Rabiul Akhir",
+  "Jumadil Awal",
+  "Jumadil Akhir",
+  "Rajab",
+  "Sya'ban",
+  "Ramadhan",
+  "Syawal",
+  "Dzulqa'dah",
+  "Dzulhijjah"
+];
+
+const hijriah =
+  `${namaBulanHijri[bulanKe - 1]} ${tahunHijri} H`;
 
   const masehi = sekarang.toLocaleDateString(
     "id-ID",
@@ -652,7 +678,7 @@ function updateBulanHijriah() {
     }
   );
 
-  bulanHijriah.textContent = hijriah + " H";
+  bulanHijriah.textContent = hijriah;
   bulanMasehi.textContent = masehi;
 }
 
