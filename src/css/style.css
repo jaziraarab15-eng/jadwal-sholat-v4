@@ -492,27 +492,27 @@ body{
 }
 
 body.subuh{
-  background-image: url("../img/subuh.jpg");
+  background-image: url("../img/subuh.png");
 }
 
 body.syuruq{
-  background-image: url("../img/syuruq.jpg");
+  background-image: url("../img/syuruq.png");
 }
 
 body.zuhur{
-  background-image: url("../img/zuhur.jpg");
+  background-image: url("../img/zuhur.png");
 }
 
 body.ashar{
-  background-image: url("../img/ashar.jpg");
+  background-image: url("../img/ashar.png");
 }
 
 body.maghrib{
-  background-image: url("../img/maghrib.jpg");
+  background-image: url("../img/maghrib.png");
 }
 
 body.isya{
-  background-image: url("../img/isya.jpg");
+  background-image: url("../img/isya.png");
 }
 
 body::before{
