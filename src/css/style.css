@@ -434,33 +434,31 @@ body.night #statusRefresh{
 }
 
 .app-footer{
-  margin:30px 20px 100px;
   text-align:center;
-  opacity:.85;
+  padding:18px 10px;
+  margin:20px 15px 85px;
+  color:#bbb;
+  font-size:13px;
+  border-top:1px solid rgba(255,255,255,.1);
 }
 
 .app-footer h3{
   margin:0;
-  font-size:22px;
+  font-size:18px;
   color:#fff;
 }
 
 .app-footer p{
-  margin:8px 0;
-  font-size:15px;
-  color:#cfcfcf;
+  margin:6px 0;
 }
 
 .app-footer .developer{
+  color:#4CAF50;
   font-weight:600;
-  color:#7CFFB2;
 }
 
 .app-footer small{
-  display:block;
-  margin-top:10px;
-  color:#9e9e9e;
-  font-size:13px;
+  color:#888;
 }
 
 @keyframes cardGlow{
@@ -482,4 +480,46 @@ body.night #statusRefresh{
 
 .next-card{
   animation:cardGlow 4s ease-in-out infinite;
+}
+
+body{
+  position:relative;
+  transition:background-image .8s ease-in-out;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+}
+
+body.subuh{
+  background-image: url("../img/subuh.jpg");
+}
+
+body.syuruq{
+  background-image: url("../img/syuruq.jpg");
+}
+
+body.zuhur{
+  background-image: url("../img/zuhur.jpg");
+}
+
+body.ashar{
+  background-image: url("../img/ashar.jpg");
+}
+
+body.maghrib{
+  background-image: url("../img/maghrib.jpg");
+}
+
+body.isya{
+  background-image: url("../img/isya.jpg");
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.35);
+  z-index:-1;
+  transition:.8s;
 }

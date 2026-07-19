@@ -268,12 +268,37 @@ if (now >= prayer.fajr && now < prayer.sunrise) {
 
 document.getElementById(aktif).classList.add("active");
 
-// Tema otomatis siang & malam
-if (now >= prayer.maghrib || now < prayer.fajr) {
-  document.body.classList.add("night");
+// Background otomatis sesuai waktu sholat
+
+let bg = "subuh";
+
+if (now >= prayer.fajr && now < prayer.sunrise) {
+
+  bg = "subuh";
+
+} else if (now >= prayer.sunrise && now < prayer.dhuhr) {
+
+  bg = "syuruq";
+
+} else if (now >= prayer.dhuhr && now < prayer.asr) {
+
+  bg = "zuhur";
+
+} else if (now >= prayer.asr && now < prayer.maghrib) {
+
+  bg = "ashar";
+
+} else if (now >= prayer.maghrib && now < prayer.isha) {
+
+  bg = "maghrib";
+
 } else {
-  document.body.classList.remove("night");
+
+  bg = "isya";
+
 }
+
+document.body.className = bg;
 
 document.getElementById("sunriseHome").textContent =
   prayer.sunrise.toLocaleTimeString("id-ID", {
