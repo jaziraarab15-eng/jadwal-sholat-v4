@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Jadwal Sholat</title>
 
-  <script type="module" crossorigin src="/assets/index-BwJPvQMH.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-C4jWXNcg.css">
+  <script type="module" crossorigin src="/assets/index-BHrnmXrK.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-Cv2PpcRb.css">
 </head>
 
 <body>
@@ -120,10 +120,62 @@
 </div>
 
 <div id="bulanPage" class="page" style="display:none">
-  <div class="card">
-    <h2>📅 Jadwal Bulanan</h2>
-    <p>Fitur segera hadir...</p>
+
+  <div class="card moon-card">
+    <h2>🌙 Kalender Islam</h2>
+    <h3 id="bulanHijriah">Muharram 1448 H</h3>
+    <p id="bulanMasehi">Juli 2026</p>
+
+    <div class="moon-icon">
+      🌕
+    </div>
+
+    <p id="faseBulan">Fase Bulan</p>
   </div>
+
+
+  <div class="card">
+    <h2>📅 Kalender Bulanan</h2>
+
+    <h3 id="namaBulan">Juli 2026</h3>
+
+    <div class="calendar-week">
+      <span>Min</span>
+      <span>Sen</span>
+      <span>Sel</span>
+      <span>Rab</span>
+      <span>Kam</span>
+      <span>Jum</span>
+      <span>Sab</span>
+    </div>
+
+    <div id="kalenderGrid" class="calendar-grid">
+    </div>
+
+  </div>
+
+<div class="card">
+  <h2>🕌 Jadwal Sholat Bulan Ini</h2>
+
+  <div id="jadwalBulanan"></div>
+
+</div>
+
+  <div class="card">
+    <h2>🕌 Catatan Islam</h2>
+
+    <div class="row">
+      <span>🌙 Ayyamul Bidh</span>
+      <span>Tanggal 13-15 H</span>
+    </div>
+
+    <div class="row">
+      <span>📿 Puasa Sunnah</span>
+      <span>Senin & Kamis</span>
+    </div>
+
+  </div>
+
 </div>
 
 <div id="menuPage" class="page" style="display:none">

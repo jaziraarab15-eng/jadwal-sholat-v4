@@ -573,3 +573,214 @@ if (madhabSelect) {
   };
 
 }
+
+// ===========================
+// KALENDER BULANAN
+// ===========================
+
+function buatKalender() {
+
+  const namaBulan = document.getElementById("namaBulan");
+  const kalenderGrid = document.getElementById("kalenderGrid");
+
+  if (!namaBulan || !kalenderGrid) return;
+
+  const sekarang = new Date();
+
+  const tahun = sekarang.getFullYear();
+  const bulan = sekarang.getMonth();
+  const hariIni = sekarang.getDate();
+
+  const daftarBulan = [
+    "Januari","Februari","Maret","April","Mei","Juni",
+    "Juli","Agustus","September","Oktober","November","Desember"
+  ];
+
+  namaBulan.textContent = `${daftarBulan[bulan]} ${tahun}`;
+
+  kalenderGrid.innerHTML = "";
+
+  const awal = new Date(tahun, bulan, 1).getDay();
+  const jumlahHari = new Date(tahun, bulan + 1, 0).getDate();
+
+  // Minggu sebagai hari pertama
+  for (let i = 0; i < awal; i++) {
+    kalenderGrid.innerHTML +=
+      `<div class="calendar-day empty"></div>`;
+  }
+
+  for (let tgl = 1; tgl <= jumlahHari; tgl++) {
+
+    const aktif = (tgl === hariIni)
+      ? "calendar-day today"
+      : "calendar-day";
+
+    kalenderGrid.innerHTML +=
+      `<div class="${aktif}">${tgl}</div>`;
+  }
+
+}
+
+buatKalender();
+
+// ===========================
+// BULAN HIJRIAH OTOMATIS
+// ===========================
+
+function updateBulanHijriah() {
+
+  const bulanHijriah = document.getElementById("bulanHijriah");
+  const bulanMasehi = document.getElementById("bulanMasehi");
+
+  if (!bulanHijriah || !bulanMasehi) return;
+
+  const sekarang = new Date();
+
+  const hijriah = new Intl.DateTimeFormat(
+    "id-TN-u-ca-islamic",
+    {
+      month: "long",
+      year: "numeric"
+    }
+  ).format(sekarang);
+
+  const masehi = sekarang.toLocaleDateString(
+    "id-ID",
+    {
+      month: "long",
+      year: "numeric"
+    }
+  );
+
+  bulanHijriah.textContent = hijriah + " H";
+  bulanMasehi.textContent = masehi;
+}
+
+updateBulanHijriah();
+
+// ===========================
+// FASE BULAN
+// ===========================
+
+function updateFaseBulan() {
+
+  const ikon = document.querySelector(".moon-icon");
+  const teks = document.getElementById("faseBulan");
+
+  if (!ikon || !teks) return;
+
+  const sekarang = new Date();
+
+  const umur = sekarang.getDate();
+
+  let emoji = "🌑";
+  let nama = "Bulan Baru";
+
+  if (umur <= 3) {
+    emoji = "🌑";
+    nama = "Bulan Baru";
+  } else if (umur <= 7) {
+    emoji = "🌒";
+    nama = "Sabit Awal";
+  } else if (umur <= 10) {
+    emoji = "🌓";
+    nama = "Perbani Awal";
+  } else if (umur <= 14) {
+    emoji = "🌔";
+    nama = "Cembung";
+  } else if (umur <= 16) {
+    emoji = "🌕";
+    nama = "Purnama";
+  } else if (umur <= 21) {
+    emoji = "🌖";
+    nama = "Cembung Akhir";
+  } else if (umur <= 24) {
+    emoji = "🌗";
+    nama = "Perbani Akhir";
+  } else {
+    emoji = "🌘";
+    nama = "Sabit Akhir";
+  }
+
+  ikon.textContent = emoji;
+  teks.textContent = nama;
+}
+
+updateFaseBulan();
+
+// ===========================
+// JADWAL SHOLAT BULANAN
+// ===========================
+
+function tampilJadwalBulanan() {
+
+  const box = document.getElementById("jadwalBulanan");
+
+  if (!box) return;
+
+  const lat = localStorage.getItem("lastLat");
+  const lon = localStorage.getItem("lastLon");
+
+  if (!lat || !lon) {
+    box.innerHTML = "Lokasi belum tersedia.";
+    return;
+  }
+
+  const koordinat = new Coordinates(
+    parseFloat(lat),
+    parseFloat(lon)
+  );
+
+  const metode =
+    CalculationMethod[
+      localStorage.getItem("method") || "Singapore"
+    ]();
+
+  metode.madhab =
+    Madhab[
+      localStorage.getItem("madhab") || "Shafi"
+    ];
+
+  const sekarang = new Date();
+
+  const tahun = sekarang.getFullYear();
+  const bulan = sekarang.getMonth();
+
+  const jumlahHari =
+    new Date(tahun, bulan + 1, 0).getDate();
+
+  box.innerHTML = "";
+
+  for (let i = 1; i <= jumlahHari; i++) {
+
+    const tanggal = new Date(tahun, bulan, i);
+
+    const prayer =
+      new PrayerTimes(
+        koordinat,
+        tanggal,
+        metode
+      );
+
+    box.innerHTML += `
+      <div class="month-prayer">
+        <div class="month-date">${i}</div>
+
+        <div class="month-time">
+          ${prayer.fajr.toLocaleTimeString("id-ID",{hour:"2-digit",minute:"2-digit"})}
+          •
+          ${prayer.dhuhr.toLocaleTimeString("id-ID",{hour:"2-digit",minute:"2-digit"})}
+          •
+          ${prayer.asr.toLocaleTimeString("id-ID",{hour:"2-digit",minute:"2-digit"})}
+          •
+          ${prayer.maghrib.toLocaleTimeString("id-ID",{hour:"2-digit",minute:"2-digit"})}
+          •
+          ${prayer.isha.toLocaleTimeString("id-ID",{hour:"2-digit",minute:"2-digit"})}
+        </div>
+      </div>
+    `;
+  }
+
+}
+
+tampilJadwalBulanan();

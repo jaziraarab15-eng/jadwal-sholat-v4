@@ -597,3 +597,91 @@ img{
   max-width:100%;
   height:auto;
 }
+
+/* =========================
+   KALENDER BULAN
+========================= */
+
+.moon-card{
+  text-align:center;
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+}
+
+.moon-icon{
+  font-size:70px;
+  margin:15px 0;
+  filter:drop-shadow(0 0 15px rgba(255,255,255,.6));
+}
+
+.calendar-week,
+.calendar-grid{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:8px;
+  text-align:center;
+}
+
+.calendar-week span{
+  color:#fff;
+  opacity:.75;
+  font-weight:600;
+}
+
+.calendar-day{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;
+  padding:12px 0;
+  color:#fff;
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  transition:.25s;
+}
+
+.calendar-day:hover{
+  background:rgba(255,255,255,.12);
+}
+
+.calendar-day.today{
+  background:rgba(255,215,0,.18);
+  border:1px solid rgba(255,215,0,.5);
+  box-shadow:0 0 15px rgba(255,215,0,.35);
+}
+
+.calendar-day.empty{
+  background:transparent;
+  border:none;
+}
+
+#faseBulan{
+  opacity:.8;
+}
+
+/* =========================
+   JADWAL SHOLAT BULANAN
+========================= */
+
+.month-prayer{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 0;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.month-prayer:last-child{
+  border-bottom:none;
+}
+
+.month-date{
+  font-weight:600;
+  color:#fff;
+}
+
+.month-time{
+  font-size:13px;
+  opacity:.85;
+  text-align:right;
+}
