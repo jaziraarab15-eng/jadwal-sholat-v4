@@ -10,6 +10,8 @@ import {
   Qibla
 } from "adhan";
 
+import HijriDate from "hijri-date/lib/safe";
+
 let countdownInterval;
 
 async function
@@ -155,15 +157,26 @@ const masehi = sekarang.toLocaleDateString("id-ID", {
   year: "numeric"
 });
 
-const parts = new Intl.DateTimeFormat("en-TN-u-ca-islamic", {
-  day: "numeric",
-  month: "long",
-  year: "numeric"
-}).formatToParts(sekarang);
+const hijri = new HijriDate(sekarang);
 
-const hariH = parts.find(p => p.type === "day")?.value ?? "";
-const bulanH = parts.find(p => p.type === "month")?.value ?? "";
-const tahunH = parts.find(p => p.type === "year")?.value ?? "";
+const namaBulan = [
+  "Muharram",
+  "Safar",
+  "Rabiul Awal",
+  "Rabiul Akhir",
+  "Jumadil Awal",
+  "Jumadil Akhir",
+  "Rajab",
+  "Syaban",
+  "Ramadhan",
+  "Syawal",
+  "Zulkaidah",
+  "Zulhijah"
+];
+
+const hariH = hijri.getDate();
+const bulanH = namaBulan[hijri.getMonth()];
+const tahunH = hijri.getFullYear();
 
 tanggalHijriah.textContent =
 `${masehi} • ${hariH} ${bulanH} ${tahunH} H`;
