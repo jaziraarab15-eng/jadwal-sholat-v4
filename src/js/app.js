@@ -176,7 +176,7 @@ const namaBulan = [
 
 const hariH = hijri.getDate();
 const bulanH = namaBulan[hijri.getMonth()];
-const tahunH = hijri.getFullYear();
+const tahunH = hijri.getYear();
 
 tanggalHijriah.textContent =
 `${masehi} • ${hariH} ${bulanH} ${tahunH} H`;
