@@ -1,6 +1,7 @@
 import { Geolocation } from "@capacitor/geolocation";
 import { Motion } from "@capacitor/motion";
 import { LocalNotifications } from "@capacitor/local-notifications";
+import moment from "moment-hijri";
 
 import {
   PrayerTimes,
@@ -10,7 +11,6 @@ import {
   Qibla
 } from "adhan";
 
-import HijriDate from "hijri-date/lib/safe";
 
 let countdownInterval;
 
@@ -157,29 +157,13 @@ const masehi = sekarang.toLocaleDateString("id-ID", {
   year: "numeric"
 });
 
-const hijri = new HijriDate(sekarang);
+const hijri = moment(sekarang);
 
-const namaBulan = [
-  "Muharram",
-  "Safar",
-  "Rabiul Awal",
-  "Rabiul Akhir",
-  "Jumadil Awal",
-  "Jumadil Akhir",
-  "Rajab",
-  "Syaban",
-  "Ramadhan",
-  "Syawal",
-  "Zulkaidah",
-  "Zulhijah"
-];
-
-const hariH = hijri.getDate();
-const bulanH = namaBulan[hijri.getMonth()];
-const tahunH = hijri.getYear();
+const hijriah =
+`${hijri.iDate()} ${hijri.format("iMMMM")} ${hijri.iYear()} H`;
 
 tanggalHijriah.textContent =
-`${masehi} • ${hariH} ${bulanH} ${tahunH} H`;
+`${masehi} • ${hijriah}`;
 
 } catch {
   const lastCity = localStorage.getItem("lastCity");
