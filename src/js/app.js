@@ -861,3 +861,17 @@ function tutupMenu() {
 
 menuHeaderBtn.addEventListener("click", bukaMenu);
 menuOverlay.addEventListener("click", tutupMenu);
+
+function showPage(id) {
+
+  document.querySelectorAll(".page").forEach(page => {
+    page.style.display = "none";
+  });
+
+  const page = document.getElementById(id);
+
+  if (page) {
+    page.style.display = "block";
+  }
+
+}

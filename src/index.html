@@ -16,7 +16,7 @@
   <button id="menuHeaderBtn">☰</button>
 
   <div class="header-text">
-  <span class="greeting">Assalamu'alaikum</span>
+  <span class="greeting">السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</span>
 
   <h2>🕌 Jadwal Sholat</h2>
 
@@ -46,9 +46,9 @@
     📅 Kalender Islam
   </button>
 
-  <button onclick="alert('📿 Dzikir & Doa segera hadir');">
-    📿 Dzikir & Doa
-  </button>
+  <button onclick="showPage('dzikirPage');tutupMenu();">
+  📿 Dzikir & Doa
+</button>
 
   <button onclick="alert('📖 Al-Qur'an segera hadir');">
     📖 Al-Qur'an
@@ -290,6 +290,43 @@
   <button id="bulanBtn">📅<br>Bulanan</button>
   <button id="menuBtn">☰<br>Menu</button>
 </nav>
+
+<div id="dzikirPage" class="page" style="display:none">
+
+  <header class="top-header">
+    <button onclick="showPage('homePage')">←</button>
+
+    <div class="header-text">
+      <h2>📿 Dzikir & Doa</h2>
+      <p>Dzikir dan doa harian</p>
+    </div>
+  </header>
+
+  <div class="card">
+
+    <div class="row">
+      <span>🌅 Dzikir Pagi</span>
+      <span>›</span>
+    </div>
+
+    <div class="row">
+      <span>🌙 Dzikir Petang</span>
+      <span>›</span>
+    </div>
+
+    <div class="row">
+      <span>🙏 Doa Harian</span>
+      <span>›</span>
+    </div>
+
+    <div class="row">
+      <span>📿 Tasbih Digital</span>
+      <span>›</span>
+    </div>
+
+  </div>
+
+</div>
 
 <script type="module" src="js/app.js"></script>
 
