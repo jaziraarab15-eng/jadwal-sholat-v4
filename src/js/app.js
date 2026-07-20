@@ -875,3 +875,6 @@ function showPage(id) {
   }
 
 }
+
+window.showPage = showPage;
+window.tutupMenu = tutupMenu;
