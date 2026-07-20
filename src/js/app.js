@@ -155,13 +155,18 @@ const masehi = sekarang.toLocaleDateString("id-ID", {
   year: "numeric"
 });
 
-const hijriah = new Intl.DateTimeFormat("id-TN-u-ca-islamic", {
+const parts = new Intl.DateTimeFormat("en-TN-u-ca-islamic", {
   day: "numeric",
   month: "long",
   year: "numeric"
-}).format(sekarang);
+}).formatToParts(sekarang);
 
-tanggalHijriah.textContent = `${masehi} • ${hijriah} H`;
+const hariH = parts.find(p => p.type === "day")?.value ?? "";
+const bulanH = parts.find(p => p.type === "month")?.value ?? "";
+const tahunH = parts.find(p => p.type === "year")?.value ?? "";
+
+tanggalHijriah.textContent =
+`${masehi} • ${hariH} ${bulanH} ${tahunH} H`;
 
 } catch {
   const lastCity = localStorage.getItem("lastCity");
