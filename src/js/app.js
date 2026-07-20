@@ -844,3 +844,20 @@ console.log("LON =", lon);
 }
 
 tampilJadwalBulanan();
+
+const menuHeaderBtn = document.getElementById("menuHeaderBtn");
+const sideMenu = document.getElementById("sideMenu");
+const menuOverlay = document.getElementById("menuOverlay");
+
+function bukaMenu() {
+  sideMenu.classList.add("open");
+  menuOverlay.classList.add("show");
+}
+
+function tutupMenu() {
+  sideMenu.classList.remove("open");
+  menuOverlay.classList.remove("show");
+}
+
+menuHeaderBtn.addEventListener("click", bukaMenu);
+menuOverlay.addEventListener("click", tutupMenu);

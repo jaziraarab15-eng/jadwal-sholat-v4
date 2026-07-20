@@ -28,6 +28,40 @@
   <button id="refreshHeaderBtn">↻</button>
 </header>
 
+<div id="sideMenu" class="side-menu">
+
+  <div class="side-header">
+    🕌 Jadwal Sholat
+  </div>
+
+  <button onclick="showPage('homePage');tutupMenu();">
+    🏠 Home
+  </button>
+
+  <button onclick="showPage('kiblatPage');tutupMenu();">
+    🧭 Kiblat
+  </button>
+
+  <button onclick="showPage('bulanPage');tutupMenu();">
+    📅 Kalender Islam
+  </button>
+
+  <button onclick="alert('📿 Dzikir & Doa segera hadir');">
+    📿 Dzikir & Doa
+  </button>
+
+  <button onclick="alert('📖 Al-Qur'an segera hadir');">
+    📖 Al-Qur'an
+  </button>
+
+  <button onclick="alert('Jadwal Sholat v4.0\nDeveloped by Mujahid Abu Hasna');">
+    ℹ️ Tentang
+  </button>
+
+</div>
+
+<div id="menuOverlay" class="menu-overlay"></div>
+
 <p id="statusRefresh" style="display:none;">
   🔄 Memperbarui lokasi...
 </p>
