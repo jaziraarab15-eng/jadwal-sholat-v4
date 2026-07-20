@@ -363,8 +363,8 @@ updateCountdown();
 if (countdownInterval) {
   clearInterval(countdownInterval);
 }
-
 countdownInterval = setInterval(updateCountdown, 1000);
+tampilJadwalBulanan();
 
 } catch (err) {
   console.error(err);
@@ -747,10 +747,19 @@ function tampilJadwalBulanan() {
   const lat = localStorage.getItem("lastLat");
   const lon = localStorage.getItem("lastLon");
 
+  console.log("=== JADWAL BULANAN ===");
+console.log("LAT =", lat);
+console.log("LON =", lon);
+
   if (!lat || !lon) {
-    box.innerHTML = "Lokasi belum tersedia.";
-    return;
-  }
+  box.innerHTML = `
+    <b>Debug Lokasi</b><br>
+    LAT: ${lat}<br>
+    LON: ${lon}<br><br>
+    Lokasi belum tersedia.
+  `;
+  return;
+}
 
   const koordinat = new Coordinates(
     parseFloat(lat),
