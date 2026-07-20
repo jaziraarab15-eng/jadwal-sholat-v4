@@ -789,22 +789,47 @@ function tampilJadwalBulanan() {
       );
 
     box.innerHTML += `
-      <div class="month-prayer">
-        <div class="month-date">${i}</div>
+  <div class="month-row">
+    <span class="date">${i} Jul</span>
 
-        <div class="month-time">
-          ${prayer.fajr.toLocaleTimeString("id-ID",{hour:"2-digit",minute:"2-digit"})}
-          •
-          ${prayer.dhuhr.toLocaleTimeString("id-ID",{hour:"2-digit",minute:"2-digit"})}
-          •
-          ${prayer.asr.toLocaleTimeString("id-ID",{hour:"2-digit",minute:"2-digit"})}
-          •
-          ${prayer.maghrib.toLocaleTimeString("id-ID",{hour:"2-digit",minute:"2-digit"})}
-          •
-          ${prayer.isha.toLocaleTimeString("id-ID",{hour:"2-digit",minute:"2-digit"})}
-        </div>
-      </div>
-    `;
+    <span>
+      ${prayer.fajr.toLocaleTimeString("id-ID",{
+        hour:"2-digit",
+        minute:"2-digit"
+      })}
+    </span>
+
+    <span>
+      ${prayer.dhuhr.toLocaleTimeString("id-ID",{
+        hour:"2-digit",
+        minute:"2-digit"
+      })}
+    </span>
+
+    <span>
+      ${prayer.asr.toLocaleTimeString("id-ID",{
+        hour:"2-digit",
+        minute:"2-digit"
+      })}
+    </span>
+
+    <span>
+      ${prayer.maghrib.toLocaleTimeString("id-ID",{
+        hour:"2-digit",
+        minute:"2-digit"
+      })}
+    </span>
+
+    <span>
+      ${prayer.isha.toLocaleTimeString("id-ID",{
+        hour:"2-digit",
+        minute:"2-digit"
+      })}
+    </span>
+
+  </div>
+`;
+
   }
 
 }

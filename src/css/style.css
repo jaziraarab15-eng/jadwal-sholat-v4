@@ -719,3 +719,54 @@ img{
   opacity:.85;
   text-align:right;
 }
+
+.month-table{
+  width:100%;
+  overflow-x:auto;
+  margin-top:12px;
+}
+
+.month-header,
+.month-row{
+  display:grid;
+  grid-template-columns:70px repeat(5,1fr);
+  gap:8px;
+  align-items:center;
+}
+
+.month-header{
+  position:sticky;
+  top:0;
+  padding:10px 8px;
+  margin-bottom:8px;
+  background:rgba(255,255,255,.15);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  border-radius:12px;
+  font-weight:700;
+  color:#fff;
+  font-size:13px;
+  text-align:center;
+}
+
+.month-row{
+  padding:10px 8px;
+  border-bottom:1px solid rgba(255,255,255,.12);
+  color:#fff;
+  font-size:13px;
+  text-align:center;
+}
+
+.month-row:last-child{
+  border-bottom:none;
+}
+
+.month-row:hover{
+  background:rgba(255,255,255,.08);
+}
+
+.month-row .date{
+  text-align:left;
+  font-weight:700;
+  color:#ffd54f;
+}
