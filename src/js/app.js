@@ -413,11 +413,9 @@ const bulanPage = document.getElementById("bulanPage");
 const menuPage = document.getElementById("menuPage");
 
 function tampilHalaman(halaman) {
-  homePage.style.display = "none";
-  sholatPage.style.display = "none";
-  kiblatPage.style.display = "none";
-  bulanPage.style.display = "none";
-  menuPage.style.display = "none";
+    document.querySelectorAll(".page").forEach(page => {
+    page.style.display = "none";
+  });
 
   halaman.style.display = "block";
 
