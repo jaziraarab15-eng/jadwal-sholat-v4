@@ -157,10 +157,25 @@ const masehi = sekarang.toLocaleDateString("id-ID", {
   year: "numeric"
 });
 
-const hijri = moment(sekarang);
+const bulanHijriah = [
+  "Muharram",
+  "Safar",
+  "Rabiul Awal",
+  "Rabiul Akhir",
+  "Jumadil Awal",
+  "Jumadil Akhir",
+  "Rajab",
+  "Syaban",
+  "Ramadhan",
+  "Syawal",
+  "Zulkaidah",
+  "Zulhijah"
+];
 
 const hijriah =
-`${hijri.iDate()} ${hijri.format("iMMMM")} ${hijri.iYear()} H`;
+`${hijri.iDate()} ${bulanHijriah[hijri.iMonth() - 1]} ${hijri.iYear()} H`;
+
+console.log("iMonth =", hijri.iMonth());
 
 tanggalHijriah.textContent =
 `${masehi} • ${hijriah}`;
