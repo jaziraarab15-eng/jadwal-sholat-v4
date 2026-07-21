@@ -901,22 +901,10 @@ function showPage(id) {
     page.style.display = "block";
 }
 
-const nav = document.querySelector(".bottom-nav");
-  if (nav) {
-    nav.classList.add("hide");
-
-  }
-
 }
 
 window.showPage = showPage;
 window.tutupMenu = tutupMenu;
-
-document.querySelector(".bottom-nav")?.addEventListener("click", function(){
-
-  this.classList.remove("hide");
-
-});
 
 let tasbih = 0;
 
@@ -971,6 +959,33 @@ document.addEventListener("click", function(e){
 
     nav.classList.remove("hide");
 
+  }
+
+});
+
+const bottomNav = document.querySelector(".bottom-nav");
+
+let startY = 0;
+
+document.addEventListener("touchstart", (e) => {
+  startY = e.touches[0].clientY;
+});
+
+document.addEventListener("touchend", (e) => {
+
+  if (!bottomNav) return;
+
+  const endY = e.changedTouches[0].clientY;
+  const delta = endY - startY;
+
+  // Swipe ke bawah
+  if (delta > 50) {
+    bottomNav.classList.add("hide");
+  }
+
+  // Swipe ke atas
+  if (delta < -50) {
+    bottomNav.classList.remove("hide");
   }
 
 });

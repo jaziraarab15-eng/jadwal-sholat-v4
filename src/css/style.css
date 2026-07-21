@@ -219,7 +219,7 @@ color:#0b8f5d;
 
 .bottom-nav.hide{
 
-    transform:translateY(82px);
+    transform:translateY(100%);
 
 }
 
