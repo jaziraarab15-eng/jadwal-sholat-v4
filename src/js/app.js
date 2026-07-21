@@ -178,7 +178,7 @@ const hijriah =
 console.log("iMonth =", hijri.iMonth());
 
 tanggalHijriah.textContent =
-`${masehi} • ${hijriah}`;
+`${masehi} • ${hijriah} (iMonth=${hijri.iMonth()})`;
 
 } catch {
   const lastCity = localStorage.getItem("lastCity");
