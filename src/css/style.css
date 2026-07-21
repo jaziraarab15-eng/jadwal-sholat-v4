@@ -204,6 +204,7 @@ color:#0b8f5d;
     box-shadow:0 -3px 15px rgba(0,0,0,.15);
     border-radius:20px 20px 0 0;
     z-index:999;
+    transition: transform .28s ease;
 }
 
 .bottom-nav button{
@@ -214,6 +215,12 @@ color:#0b8f5d;
     color:#1b5e20;
     font-size:14px;
     font-weight:bold;
+}
+
+.bottom-nav.hide{
+
+    transform:translateY(82px);
+
 }
 
 .bottom-nav button:active{

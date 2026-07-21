@@ -899,12 +899,24 @@ function showPage(id) {
 
   if (page) {
     page.style.display = "block";
+}
+
+const nav = document.querySelector(".bottom-nav");
+  if (nav) {
+    nav.classList.add("hide");
+
   }
 
 }
 
 window.showPage = showPage;
 window.tutupMenu = tutupMenu;
+
+document.querySelector(".bottom-nav")?.addEventListener("click", function(){
+
+  this.classList.remove("hide");
+
+});
 
 let tasbih = 0;
 
@@ -948,3 +960,17 @@ if (resetTasbih) {
   };
 
 }
+
+document.addEventListener("click", function(e){
+
+  const nav = document.querySelector(".bottom-nav");
+
+  if(!nav) return;
+
+  if(e.clientY > window.innerHeight - 60){
+
+    nav.classList.remove("hide");
+
+  }
+
+});
