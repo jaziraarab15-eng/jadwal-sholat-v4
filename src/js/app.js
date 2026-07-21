@@ -329,8 +329,20 @@ document.getElementById("dhuhrHome").textContent =
     minute: "2-digit"
   });
 
+document.getElementById("asrHome").textContent =
+  prayer.asr.toLocaleTimeString("id-ID", {
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+
 document.getElementById("maghribHome").textContent =
   prayer.maghrib.toLocaleTimeString("id-ID", {
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+
+document.getElementById("ishaHome").textContent =
+  prayer.isha.toLocaleTimeString("id-ID", {
     hour: "2-digit",
     minute: "2-digit"
   });
