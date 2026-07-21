@@ -157,6 +157,8 @@ const masehi = sekarang.toLocaleDateString("id-ID", {
   year: "numeric"
 });
 
+const hijri = moment(sekarang);
+
 const bulanHijriah = [
   "Muharram",
   "Safar",
