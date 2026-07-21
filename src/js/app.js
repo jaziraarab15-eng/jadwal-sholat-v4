@@ -180,9 +180,6 @@ const hijriah =
 tanggalHijriah.textContent =
 `${masehi} • ${hijriah}`;
 
-tanggalHijriah.textContent =
-`${masehi} • ${hijriah} (iMonth=${hijri.iMonth()})`;
-
 } catch {
   const lastCity = localStorage.getItem("lastCity");
 
