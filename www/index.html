@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Jadwal Sholat</title>
 
-  <script type="module" crossorigin src="/assets/index-D06W_Ikv.js"></script>
+  <script type="module" crossorigin src="/assets/index-nT0ZOgyq.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/index-DJr44k0L.css">
 </head>
 
@@ -320,10 +320,10 @@
   <span>›</span>
 </div>
 
-    <div class="row">
-      <span>📿 Tasbih Digital</span>
-      <span>›</span>
-    </div>
+    <div class="row" onclick="showPage('tasbihPage')">
+  <span>📿 Tasbih Digital</span>
+  <span>›</span>
+</div>
 
   </div>
 
@@ -851,6 +851,31 @@ Rabbighfir lii wa tub 'alayya innaka antat tawwaabur rahiim.
 <p>
 Ya Tuhanku, ampunilah aku dan terimalah taubatku. Sesungguhnya Engkau Maha Penerima Taubat lagi Maha Penyayang.
 </p>
+
+  </div>
+
+</div>
+
+<div id="tasbihPage" class="page" style="display:none">
+
+  <header class="top-header">
+    <button onclick="showPage('dzikirPage')">←</button>
+
+    <div class="header-text">
+      <h2>📿 Tasbih Digital</h2>
+      <p>Hitung dzikir harian</p>
+    </div>
+  </header>
+
+  <div class="card" style="text-align:center">
+
+    <h1 id="tasbihCount">0</h1>
+
+    <button id="tasbihBtn">📿 Hitung</button>
+
+    <br><br>
+
+    <button id="resetTasbih">🔄 Reset</button>
 
   </div>
 

@@ -893,3 +893,31 @@ function showPage(id) {
 
 window.showPage = showPage;
 window.tutupMenu = tutupMenu;
+
+let tasbih = 0;
+
+const tasbihBtn = document.getElementById("tasbihBtn");
+const resetTasbih = document.getElementById("resetTasbih");
+const tasbihCount = document.getElementById("tasbihCount");
+
+if (tasbihBtn) {
+
+  tasbihBtn.onclick = () => {
+    tasbih++;
+    tasbihCount.textContent = tasbih;
+
+    if (navigator.vibrate) {
+      navigator.vibrate(20);
+    }
+  };
+
+}
+
+if (resetTasbih) {
+
+  resetTasbih.onclick = () => {
+    tasbih = 0;
+    tasbihCount.textContent = 0;
+  };
+
+}
