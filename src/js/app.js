@@ -903,12 +903,27 @@ const tasbihCount = document.getElementById("tasbihCount");
 if (tasbihBtn) {
 
   tasbihBtn.onclick = () => {
+
     tasbih++;
     tasbihCount.textContent = tasbih;
 
+    // Getar pendek setiap klik
     if (navigator.vibrate) {
       navigator.vibrate(20);
     }
+
+    // Target dzikir
+    if (tasbih === 33 || tasbih === 99 || tasbih === 100) {
+
+      // Getar panjang
+      if (navigator.vibrate) {
+        navigator.vibrate([300, 100, 300]);
+      }
+
+      alert("🎉 Target " + tasbih + " tercapai");
+
+    }
+
   };
 
 }
