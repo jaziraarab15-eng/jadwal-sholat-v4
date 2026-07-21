@@ -175,9 +175,10 @@ const bulanHijriah = [
 ];
 
 const hijriah =
-`${hijri.iDate()} ${bulanHijriah[hijri.iMonth() - 1]} ${hijri.iYear()} H`;
+`${hijri.iDate()} ${bulanHijriah[hijri.iMonth()]} ${hijri.iYear()} H`;
 
-console.log("iMonth =", hijri.iMonth());
+tanggalHijriah.textContent =
+`${masehi} • ${hijriah}`;
 
 tanggalHijriah.textContent =
 `${masehi} • ${hijriah} (iMonth=${hijri.iMonth()})`;
