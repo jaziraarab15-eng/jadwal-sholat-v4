@@ -212,39 +212,98 @@ namaSurah.textContent =
 `📖 ${surat.namaLatin}`;
 
 
+const artiSurah =
+document.getElementById("artiSurah");
+
+const jumlahAyat =
+document.getElementById("jumlahAyat");
+
+
+if(artiSurah){
+
+  artiSurah.textContent =
+  surat.arti;
+
+}
+
+
+if(jumlahAyat){
+
+  jumlahAyat.textContent =
+  surat.jumlahAyat + " Ayat";
+
+}
+
+const juzInfo =
+document.getElementById("juzInfo");
+
+
+const halamanInfo =
+document.getElementById("halamanInfo");
+
+
+
+if(juzInfo){
+
+  juzInfo.textContent =
+  "📖 Juz " + 
+  (surat.ayat[0].juz || "-");
+
+}
+
+
+
+if(halamanInfo){
+
+  halamanInfo.textContent =
+  "📄 Halaman " +
+  (surat.ayat[0].halaman || "-");
+
+}
+
 ayatList.innerHTML="";
 
+// Basmalah (kecuali At-Taubah)
+if(surat.nomor !== 9){
+
+ayatList.innerHTML += `
+
+<div class="basmalah">
+
+بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ
+
+</div>
+
+`;
+
+}
 
 surat.ayat.forEach(ayat=>{
-
 
 const div =
 document.createElement("div");
 
-
-div.className="ayat";
-
+div.className="ayat-box";
 
 div.innerHTML=`
 
-<h3>
+<div class="nomor-ayat">
 ${ayat.nomorAyat}
-</h3>
+</div>
 
-<p>
+<div class="arab">
 ${ayat.teksArab}
-</p>
+</div>
 
-<p>
+<div class="latin">
 ${ayat.teksLatin}
-</p>
+</div>
 
-<p>
+<div class="terjemah">
 ${ayat.teksIndonesia}
-</p>
+</div>
 
 `;
-
 
 ayatList.appendChild(div);
 

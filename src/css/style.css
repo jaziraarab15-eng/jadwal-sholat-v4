@@ -1195,3 +1195,281 @@ img{
   font-weight:700;
 
 }
+
+/* =========================
+   Quran Mushaf Style
+========================= */
+
+.quran-reader{
+  background:#fffdf7;
+  padding:20px;
+  border-radius:20px;
+  line-height:1.8;
+}
+
+
+.quran-title{
+  text-align:center;
+  font-size:24px;
+  font-weight:bold;
+}
+
+
+.ayat-box{
+  padding:18px 10px;
+  border-bottom:1px solid #ddd;
+}
+
+
+.nomor-ayat{
+  display:inline-flex;
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  align-items:center;
+  justify-content:center;
+  background:#eee;
+  margin-bottom:10px;
+}
+
+
+.arab{
+  direction:rtl;
+  text-align:right;
+  font-size:32px;
+  line-height:2;
+  font-family:
+  "Amiri",
+  serif;
+}
+
+
+.latin{
+  font-size:16px;
+  font-style:italic;
+}
+
+
+.terjemah{
+  font-size:15px;
+  color:#555;
+}
+
+/* Basmalah Mushaf */
+
+.basmalah{
+
+direction:rtl;
+
+text-align:center;
+
+font-size:36px;
+
+font-family:"Amiri", serif;
+
+padding:25px 10px;
+
+line-height:2;
+
+color:#222;
+
+}
+
+/* =================================
+   Mushaf Digital Premium
+================================= */
+
+
+#ayatPage{
+
+background:#f5efdf;
+
+padding-bottom:30px;
+
+}
+
+
+
+/* Halaman mushaf */
+
+#ayatList{
+
+background:#fffaf0;
+
+margin:10px;
+
+padding:15px;
+
+border-radius:20px;
+
+border:2px solid #dcc89b;
+
+box-shadow:
+0 5px 20px rgba(0,0,0,0.08);
+
+}
+
+
+
+/* Header Surah */
+
+.quran-header{
+
+background:#fffaf0;
+
+margin:10px;
+
+padding:20px;
+
+text-align:center;
+
+border-radius:20px;
+
+border:2px solid #dcc89b;
+
+}
+
+
+
+.quran-header h2{
+
+font-family:"Amiri",serif;
+
+font-size:28px;
+
+color:#333;
+
+}
+
+
+
+.quran-header p{
+
+font-size:16px;
+
+}
+
+
+
+/* Basmalah */
+
+.basmalah{
+
+text-align:center;
+
+direction:rtl;
+
+font-family:"Amiri",serif;
+
+font-size:38px;
+
+line-height:2;
+
+padding:25px;
+
+}
+
+
+
+/* Ayat */
+
+.ayat-box{
+
+padding:25px 15px;
+
+border-bottom:
+
+1px dashed #cdbb8a;
+
+}
+
+
+
+.nomor-ayat{
+
+width:38px;
+
+height:38px;
+
+border-radius:50%;
+
+background:#d9c28f;
+
+color:#333;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+margin:auto;
+
+font-weight:bold;
+
+}
+
+
+
+/* Arab */
+
+.arab{
+
+direction:rtl;
+
+text-align:right;
+
+font-family:"Amiri",serif;
+
+font-size:36px;
+
+line-height:2.4;
+
+margin-top:20px;
+
+color:#111;
+
+}
+
+
+
+/* Latin */
+
+.latin{
+
+font-size:16px;
+
+font-style:italic;
+
+margin-top:15px;
+
+color:#555;
+
+}
+
+
+
+/* Terjemah */
+
+.terjemah{
+
+font-size:16px;
+
+line-height:1.8;
+
+margin-top:12px;
+
+color:#333;
+
+}
+
+.quran-header #juzInfo,
+.quran-header #halamanInfo{
+
+font-size:15px;
+
+color:#777;
+
+margin:4px;
+
+}
