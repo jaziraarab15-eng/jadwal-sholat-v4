@@ -50,9 +50,9 @@
   📿 Dzikir & Doa
 </button>
 
-  <button onclick="alert('📖 Al-Qur'an segera hadir');">
-    📖 Al-Qur'an
-  </button>
+<button id="quranBtn">
+   📖 Al-Qur'an
+</button>
 
   <button onclick="alert('Jadwal Sholat v4.0\nDeveloped by Mujahid Abu Hasna');">
     ℹ️ Tentang
@@ -253,6 +253,28 @@
   </div>
 
 </div>
+
+</div>
+
+<div id="quranPage" class="page" style="display:none">
+
+  <div class="card">
+
+    <h2>📖 Al-Qur'an</h2>
+
+    <input
+      type="text"
+      id="quranSearch"
+      placeholder="Cari nama surah..."
+    >
+
+    <div id="surahList">
+
+      <p>Memuat daftar surah...</p>
+
+    </div>
+
+  </div>
 
 </div>
 

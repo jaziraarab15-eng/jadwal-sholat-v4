@@ -43,7 +43,7 @@ from "./ui/tasbih.js";
 import { initClock }
 from "./ui/clock.js";
 
-
+import { loadSurah } from "./modules/quran.js";
 
 // ======================================
 // START APP
@@ -109,7 +109,7 @@ initTasbih();
 
 initClock();
 
-
+loadSurah();
 
 console.log(
 "✅ V5 Ready"

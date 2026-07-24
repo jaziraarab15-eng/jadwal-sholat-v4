@@ -38,6 +38,11 @@ document.getElementById("bulanPage");
 const menuPage =
 document.getElementById("menuPage");
 
+const quranBtn =
+document.getElementById("quranBtn");
+
+const quranPage =
+document.getElementById("quranPage");
 
 
 function tampilHalaman(halaman){
@@ -80,6 +85,9 @@ if(bulanBtn)
 bulanBtn.onclick =
 ()=>tampilHalaman(bulanPage);
 
+if(quranBtn)
+quranBtn.onclick =
+()=>tampilHalaman(quranPage);
 
 if(menuBtn)
 menuBtn.onclick =
