@@ -1603,3 +1603,32 @@ transition:.4s;
 
 }
 
+.last-read-card{
+
+background:#f8f3df;
+
+border:1px solid #d8b866;
+
+border-radius:16px;
+
+padding:15px;
+
+margin:15px 0;
+
+text-align:center;
+
+}
+
+.last-read-card button{
+
+background:#138a4b;
+
+color:white;
+
+border:0;
+
+padding:10px 25px;
+
+border-radius:12px;
+
+}

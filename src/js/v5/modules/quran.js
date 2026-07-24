@@ -88,7 +88,11 @@ tampilkanSurah(hasil);
 
 }
 
+setTimeout(()=>{
+
 tampilkanBookmark();
+
+},300);
 
 }catch(err){
 
