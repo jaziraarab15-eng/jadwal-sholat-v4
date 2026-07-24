@@ -88,7 +88,7 @@ tampilkanSurah(hasil);
 
 }
 
-
+tampilkanBookmark();
 
 }catch(err){
 
@@ -290,6 +290,9 @@ document.createElement("div");
 
 div.className="ayat-box";
 
+div.id =
+"ayat-" + ayat.nomorAyat;
+
 div.innerHTML=`
 
 <div class="nomor-ayat">
@@ -332,6 +335,47 @@ ayat: ayat.nomorAyat
 
 });
 
+const last =
+JSON.parse(
+localStorage.getItem("lastQuran")
+);
+
+if(last && last.surah == nomor){
+
+setTimeout(()=>{
+
+const target =
+document.getElementById(
+"ayat-" + last.ayat
+);
+
+if(target){
+
+target.scrollIntoView({
+
+behavior:"smooth",
+
+block:"center"
+
+});
+
+target.classList.add(
+"ayat-highlight"
+);
+
+setTimeout(()=>{
+
+target.classList.remove(
+"ayat-highlight"
+);
+
+},3000);
+
+}
+
+},300);
+
+}
 
 }catch(err){
 
@@ -370,3 +414,60 @@ return JSON.parse(data);
 
 
 }
+
+function tampilkanBookmark(){
+
+const card =
+document.getElementById("lastReadCard");
+
+const info =
+document.getElementById("lastReadInfo");
+
+const tombol =
+document.getElementById("continueRead");
+
+
+const data =
+JSON.parse(
+localStorage.getItem("lastQuran")
+);
+
+
+if(!data){
+
+card.style.display="none";
+
+return;
+
+}
+
+
+card.style.display="block";
+
+
+const surah =
+window.daftarSurah?.find(
+s => s.nomor == data.surah
+);
+
+if(surah){
+
+info.innerHTML =
+`<strong>${surah.namaLatin}</strong><br>Ayat ${data.ayat}`;
+
+}else{
+
+info.textContent =
+`Surah ${data.surah} • Ayat ${data.ayat}`;
+
+}
+
+tombol.onclick=()=>{
+
+bukaSurah(data.surah);
+
+};
+
+}
+
+
