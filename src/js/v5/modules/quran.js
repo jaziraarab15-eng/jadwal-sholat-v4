@@ -3,6 +3,8 @@
 // Quran Module
 // ======================================
 
+import { MUSHAF_DATA }
+from "../data/mushafPage.js";
 
 const API =
 "https://equran.id/api/v2/surat";
@@ -243,21 +245,24 @@ document.getElementById("halamanInfo");
 
 
 
+const mushaf =
+MUSHAF_DATA[nomor];
+
+
 if(juzInfo){
 
-  juzInfo.textContent =
-  "📖 Juz " + 
-  (surat.ayat[0].juz || "-");
+juzInfo.textContent =
+"📖 Juz " +
+(mushaf ? mushaf.juz : "-");
 
 }
 
 
-
 if(halamanInfo){
 
-  halamanInfo.textContent =
-  "📄 Halaman " +
-  (surat.ayat[0].halaman || "-");
+halamanInfo.textContent =
+"📄 Halaman " +
+(mushaf ? mushaf.page : "-");
 
 }
 
@@ -307,6 +312,23 @@ ${ayat.teksIndonesia}
 
 ayatList.appendChild(div);
 
+// Simpan ayat terakhir dibaca
+
+div.onclick = ()=>{
+
+localStorage.setItem(
+"lastQuran",
+JSON.stringify({
+
+surah: nomor,
+
+ayat: ayat.nomorAyat
+
+})
+);
+
+
+};
 
 });
 
@@ -334,3 +356,17 @@ document.getElementById("quranPage").style.display="block";
 
 });
 
+export function getLastQuran(){
+
+
+const data =
+localStorage.getItem("lastQuran");
+
+
+if(!data) return null;
+
+
+return JSON.parse(data);
+
+
+}
