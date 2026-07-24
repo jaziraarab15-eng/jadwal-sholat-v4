@@ -143,8 +143,22 @@ tutupMenu;
 
 
 
-window.showPage =
-tampilHalaman;
+window.showPage = function(id){
+
+  document
+    .querySelectorAll(".page")
+    .forEach(page=>{
+      page.style.display = "none";
+    });
+
+  const halaman =
+    document.getElementById(id);
+
+  if(halaman){
+    halaman.style.display = "block";
+  }
+
+};
 
 window.tutupMenu =
 tutupMenu;
